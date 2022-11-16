@@ -1,3 +1,4 @@
+const $body = document.querySelector('body');
 const $weatherForm = document.querySelector('form');
 const $search = document.querySelector('input');
 const $messageOne = document.querySelector('#message-1');
@@ -21,10 +22,14 @@ $weatherForm.addEventListener('submit', e => {
 			if (data.error) {
 				$messageOne.textContent = data.error;
 			} else {
+				if (data.isDay == 'yes') {
+					$body.style.backgroundColor = '#f8d14c';
+				} else {
+					$body.style.backgroundColor = '#1c1c1c';
+				}
 				$messageOne.textContent = data.location;
 				$messageTwo.textContent = data.forecast;
 			}
 		});
 	});
 });
-console.log('Testing');
